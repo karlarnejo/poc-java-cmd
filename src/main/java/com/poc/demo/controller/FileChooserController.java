@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.poc.demo.common.ApiResultRest;
-import com.poc.demo.models.CommandInputModel;
-import com.poc.demo.service.CommandService;
+import com.poc.demo.models.FileUploadInputModel;
+import com.poc.demo.service.FileUpload;
 
 @RestController
-@RequestMapping("/commandline")
+@RequestMapping("/upload")
 @CrossOrigin(origins="http://localhost:3000", maxAge=3600)
-public class CommandLineController {
-	
-	@Autowired
-	private CommandService commandService;
+public class FileChooserController {
 
+	@Autowired
+	private FileUpload fileUpload;
+	
 	@RequestMapping(value = "/run", method = RequestMethod.POST)
-	public ApiResultRest runCmd(@RequestBody CommandInputModel commandInputModel) {
-		return ApiResultRest.createResponse(commandService.runCommand(commandInputModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
+	public ApiResultRest upload(@RequestBody FileUploadInputModel fileUploadInputModel) {
+		return ApiResultRest.createResponse(fileUpload.getAbsolutePaths(fileUploadInputModel), "CUSTOM_SUCCESS_STATUS", "Message to be added later");
 	}
 }

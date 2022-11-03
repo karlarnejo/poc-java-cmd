@@ -25,12 +25,12 @@ public class JwtAuthenticationController {
 	private JwtUserDetailsService userDetailsService;
 	
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ApiResultAuth createAuthenticationToken(@RequestBody AuthenticationModel authenticationRequest) throws Exception {
+	public ApiResultAuth createAuthenticationToken(@RequestBody AuthenticationModel authenticationRequestModel) throws Exception {
 
-		userDetailsService.authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+		userDetailsService.authenticate(authenticationRequestModel.getUsername(), authenticationRequestModel.getPassword());
 
 		final UserDetails userDetails = userDetailsService
-				.loadUserByUsername(authenticationRequest.getUsername());
+				.loadUserByUsername(authenticationRequestModel.getUsername());
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		

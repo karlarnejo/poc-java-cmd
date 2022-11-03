@@ -1,14 +1,14 @@
 package com.poc.demo.models;
 
-public class CommandOutput {
+public class CommandOutputModel {
 	
 	private String output;
 	
-	public CommandOutput() {
+	public CommandOutputModel() {
 		
 	}
 	
-	public CommandOutput(String output) {
+	public CommandOutputModel(String output) {
 		this.output = output;
 	}
 

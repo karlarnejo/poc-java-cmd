@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.poc.demo.entity.Userr;
 
 @Service
-public class LoginRequest implements UserDetails {
+public class LoginRequestModel implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,16 +21,16 @@ public class LoginRequest implements UserDetails {
 	private boolean isPasswordNotExpired;
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public LoginRequest() {
+	public LoginRequestModel() {
 
 	}
 	
-	public LoginRequest(Userr userEntity) {
+	public LoginRequestModel(Userr userEntity) {
 		this.setUsername(userEntity.getUsername());
 		this.setPassword(userEntity.getPassword());
 	}
 
-	public LoginRequest(String username, String password, boolean isEnabled, boolean isNotLocked,
+	public LoginRequestModel(String username, String password, boolean isEnabled, boolean isNotLocked,
 			boolean isAccountNotExpired, boolean isPasswordNotExpired, Collection<? extends GrantedAuthority> authorities) {
 		this.username = username;
 		this.password = password;

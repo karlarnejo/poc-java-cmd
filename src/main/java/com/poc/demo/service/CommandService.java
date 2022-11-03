@@ -1,10 +1,8 @@
 package com.poc.demo.service;
 
-import java.io.IOException;
-
-import com.poc.demo.models.CommandInput;
+import com.poc.demo.models.CommandInputModel;
 
 public interface CommandService {
 
-	public String runCommand(CommandInput commandInput) throws IOException;
+	public String runCommand(CommandInputModel commandInputModel);
 }

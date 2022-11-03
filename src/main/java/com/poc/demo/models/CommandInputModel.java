@@ -1,14 +1,14 @@
 package com.poc.demo.models;
 
-public class CommandInput {
+public class CommandInputModel {
 
 	private String command;
 	
-	public CommandInput() {
+	public CommandInputModel() {
 		
 	}
 	
-	public CommandInput(String command) {
+	public CommandInputModel(String command) {
 		this.command = command;
 	}
 
