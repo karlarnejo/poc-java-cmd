@@ -14,12 +14,13 @@ import com.poc.demo.models.CommandOutputModel;
 public class CommandServiceImpl implements CommandService {
 
 	@Override
-	public String runCommand(CommandInputModel commandInputModel) {
+	public CommandOutputModel runCommand(CommandInputModel commandInputModel) {
 		// TODO Auto-generated method stub
 		
+		CommandOutputModel commandOutputModel = new CommandOutputModel();
+
 		String tmpOutput = "";
 		try {
-			CommandOutputModel commandOutputModel = new CommandOutputModel();
 			
 			Process process = Runtime.getRuntime().exec(commandInputModel.getCommand());
 			
@@ -29,11 +30,16 @@ public class CommandServiceImpl implements CommandService {
 		        tmpOutput = tmpOutput + line;
 		    }
 		    
+		    tmpOutput = commandInputModel.getCommand() + "\n" + tmpOutput;
+		    
 		    commandOutputModel.setOutput(tmpOutput);
 	    	
-			return commandInputModel.getCommand() + "\n" + commandOutputModel.getOutput();
+			return commandOutputModel;
 		} catch(Exception e) {
-			return "There is an Error in your command. Please check your command.";
+			
+			commandOutputModel.setOutput(commandInputModel.getCommand() + "\n" + "There is an Error in your command. Please check your command.");
+			
+			return commandOutputModel;
 		}
 	}
 }

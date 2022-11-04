@@ -1,8 +1,9 @@
 package com.poc.demo.service;
 
 import com.poc.demo.models.CommandInputModel;
+import com.poc.demo.models.CommandOutputModel;
 
 public interface CommandService {
 
-	public String runCommand(CommandInputModel commandInputModel);
+	public CommandOutputModel runCommand(CommandInputModel commandInputModel);
 }
