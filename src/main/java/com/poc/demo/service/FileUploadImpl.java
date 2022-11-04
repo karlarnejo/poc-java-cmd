@@ -21,14 +21,16 @@ public class FileUploadImpl implements FileUpload {
 		// TODO Auto-generated method stub
 		List<FileUploadOutputModel> files = new ArrayList<FileUploadOutputModel>();
 		
-		FileUploadOutputModel tmpModel = new FileUploadOutputModel();
-		
-		tmpModel.setAbsolutePaths("sample");
-		
-		files.add(tmpModel);
+		String samplePath = "/this/is/a/sample/path/";
 		
 //		Path p = Paths.get("279915158_1224658391611074_6189464163912329446_n");
 //		Path folder = p.getParent();
+		
+		fileUploadInputModel.getFiles().forEach(data -> {
+			FileUploadOutputModel tmpModel = new FileUploadOutputModel(samplePath+data);
+			
+			files.add(tmpModel);
+		});
 				
 		return files;
 	}
